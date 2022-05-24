@@ -1,10 +1,11 @@
 <template>
   <li class="object_card text-center pd-1">
     <div class="content">
-      <h3>{{ cardObject.title }}</h3>
-      <h5>{{ cardObject.original_title }}</h5>
+      <h3>{{ cardObject.title ? cardObject.title : cardObject.name }}</h3>
+      <h5>{{ cardObject.original_title ? cardObject.title : cardObject.name }}</h5>
       <p>{{ cardObject.original_language }}</p>
       <p>{{ cardObject.vote_average }}</p>
+      <!-- <p >{{ cardObject.overview }}</p> -->
     </div>
   </li>
 </template>
