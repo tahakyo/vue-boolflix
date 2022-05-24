@@ -1,10 +1,10 @@
 <template>
   <li class="object_card text-center pd-1">
     <div class="content">
-      <h3>{{ movie.title }}</h3>
-      <h5>{{ movie.original_title }}</h5>
-      <p>{{ movie.original_language }}</p>
-      <p>{{ movie.vote_average }}</p>
+      <h3>{{ cardObject.title }}</h3>
+      <h5>{{ cardObject.original_title }}</h5>
+      <p>{{ cardObject.original_language }}</p>
+      <p>{{ cardObject.vote_average }}</p>
     </div>
   </li>
 </template>
@@ -13,7 +13,7 @@
 export default {
   name: "AppCard",
   props: {
-    movie: Object
+    cardObject: Object
   }
 };
 </script>
