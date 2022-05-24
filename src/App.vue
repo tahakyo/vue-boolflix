@@ -7,7 +7,7 @@
     <!-- header -->
     <!-- main -->
     <main>
-      <AppMain />
+      <AppMain :movies="moviesList" />
     </main>
     <!-- main -->
   </div>
@@ -25,7 +25,7 @@ export default {
   },
    data() {
     return {
-      films: [],
+      moviesList: [],
     };
   },
   methods: {
@@ -39,7 +39,7 @@ export default {
       })
       .then((resp) => {
         console.log(resp);
-        this.films = resp.data.results;
+        this.moviesList = resp.data.results;
       })
     }
   },
