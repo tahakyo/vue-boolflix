@@ -7,7 +7,7 @@
     <!-- header -->
     <!-- main -->
     <main>
-      <AppMain :movies="moviesList" />
+      <AppMain :movies="moviesList" :series="seriesList"/>
     </main>
     <!-- main -->
   </div>
@@ -23,25 +23,36 @@ export default {
     AppHeader,
     AppMain,
   },
-   data() {
+  data() {
     return {
       moviesList: [],
+      seriesList: [],
     };
   },
   methods: {
     searchMovies(input) {
       axios
-      .get("https://api.themoviedb.org/3/search/movie", {
-        params: {
-          api_key: "d79e37bb8a27f3c75678e1bc5adf64dc",
-          query: input,
-        },
-      })
-      .then((resp) => {
-        console.log(resp);
-        this.moviesList = resp.data.results;
-      })
-    }
+        .get("https://api.themoviedb.org/3/search/movie", {
+          params: {
+            api_key: "d79e37bb8a27f3c75678e1bc5adf64dc",
+            query: input,
+          },
+        })
+        .then((resp) => {
+          this.moviesList = resp.data.results;
+        });
+      axios
+        .get("https://api.themoviedb.org/3/search/tv", {
+          params: {
+            api_key: "d79e37bb8a27f3c75678e1bc5adf64dc",
+            query: input,
+          },
+        })
+        .then((resp) => {
+          console.log(resp);
+          this.seriesList = resp.data.results;
+        });
+    },
   },
 };
 </script>
