@@ -2,8 +2,15 @@
   <li class="object_card text-center pd-1">
     <div class="content">
       <h3>{{ cardObject.title ? cardObject.title : cardObject.name }}</h3>
-      <h5>{{ cardObject.original_title ? cardObject.title : cardObject.name }}</h5>
-      <p>{{ cardObject.original_language }}</p>
+      <h5>
+        {{ cardObject.original_title ? cardObject.title : cardObject.name }}
+      </h5>
+      <img
+        v-if="languageIsAvailable"
+        :src="require(`../assets/img/${cardObject.original_language}.png`)"
+        :alt="cardObject.original_language"
+      />
+      <p v-else>{{ cardObject.original_language }}</p>
       <p>{{ cardObject.vote_average }}</p>
       <!-- <p >{{ cardObject.overview }}</p> -->
     </div>
@@ -14,8 +21,18 @@
 export default {
   name: "AppCard",
   props: {
-    cardObject: Object
-  }
+    cardObject: Object,
+  },
+  data() {
+    return {
+      flags: ["en", "fr", "it", "ja", "ru", "de"],
+    };
+  },
+  computed: {
+    languageIsAvailable() {
+      return this.flags.includes(this.cardObject.original_language);
+    },
+  },
 };
 </script>
 
