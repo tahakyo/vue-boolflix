@@ -1,9 +1,12 @@
 <template>
   <li class="object_card text-center pd-1">
     <div class="path_card">
-      <img :src="`https://image.tmdb.org/t/p/w342/${cardObject.poster_path}`" alt="">
+      <img v-if="imageFound" :src="`https://image.tmdb.org/t/p/w342/${imageFound}`" :alt="cardObject.poster_path">
+      <img v-else src="../assets/img/image-not-found.png" alt="image-not-found">
     </div>
     <div class="content">
+
+      <!-- <h3>{{ cardObject.title || cardObject.name }}</h3> with "||= 'or" -->
       <h3>{{ cardObject.title ? cardObject.title : cardObject.name }}</h3>
       <h5>
         {{ cardObject.original_title ? cardObject.title : cardObject.name }}
@@ -16,6 +19,7 @@
       <p v-else>{{ cardObject.original_language }}</p>
       <p>{{ cardObject.vote_average }}</p>
       <!-- <p >{{ cardObject.overview }}</p> -->
+
     </div>
   </li>
 </template>
@@ -35,6 +39,9 @@ export default {
     languageIsAvailable() {
       return this.flags.includes(this.cardObject.original_language);
     },
+    imageFound() {
+      return this.cardObject.poster_path;
+    }
   },
 };
 </script>
@@ -44,9 +51,14 @@ export default {
   width: calc(100% / 4 - 10px);
   margin: 5px;
   border: 1px solid white;
-  .path_card img {
-    width: 100%;
+  .path_card {
+    min-height: 500px;
+    max-height: 500px; 
+      img {
+      width: 100%;
+      overflow: hidden;
+      padding: 1rem;
+    }
   }
-
 }
 </style>
