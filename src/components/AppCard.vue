@@ -7,6 +7,7 @@
         :alt="cardObject.poster_path"
       />
       <img
+        class="p-4 mt-5"
         v-else
         src="../assets/img/image-not-found.png"
         alt="image-not-found"
@@ -26,9 +27,16 @@
       <p v-else>{{ cardObject.original_language }}</p>
       <p>{{ vote5stars }}</p>
       <p>
-        <i v-for="n in 5" :key="n" class="fa-star" :class="n <= vote5stars ? 'fas' : 'far'"></i>
+        <i
+          v-for="n in 5"
+          :key="n"
+          class="fa-star"
+          :class="n <= vote5stars ? 'fas' : 'far'"
+        ></i>
       </p>
-      <!-- <p >{{ cardObject.overview }}</p> -->
+    </div>
+    <div class="overview">
+      <p>{{ cardObject.overview }}</p>
     </div>
   </li>
 </template>
@@ -52,7 +60,7 @@ export default {
       return this.cardObject.poster_path;
     },
     vote5stars() {
-      return Math.ceil( this.cardObject.vote_average / 2 );
+      return Math.ceil(this.cardObject.vote_average / 2);
     },
   },
 };
@@ -72,6 +80,10 @@ export default {
       overflow: hidden;
       padding: 1rem;
     }
+  }
+  .content {
+    min-height: 300px;
+    max-height: 300px;
   }
 }
 </style>
