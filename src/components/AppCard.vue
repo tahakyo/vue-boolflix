@@ -71,7 +71,8 @@ export default {
 .object_card {
   width: calc(100% / 4 - 10px);
   margin: 5px;
-  border: 1px solid white;
+  border: 5px solid #2f2727;
+  border-radius: 1rem;
   .path_card {
     min-height: 500px;
     max-height: 500px;

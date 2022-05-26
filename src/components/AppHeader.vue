@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="header_logo text-center p-3">
-      <img src="https://fontmeme.com/temporary/d8ddfaed02879e05e02a0b94df324e8e.png" alt="">
+      <img src="../assets/img/header_logo.png" alt="">
     </div>
     <div class="search_bar d-flex mb-3">
       <label class="form-label"></label>
